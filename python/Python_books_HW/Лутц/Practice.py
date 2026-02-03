@@ -1,3 +1,4 @@
+"""
 #Part_2_practice
 print("Task1")
 print("---Ints---")
@@ -99,3 +100,29 @@ readfile = open("myfile.txt", 'r')
 line = readfile.readline()
 print(line)
 myfile.close()
+"""
+#Part_3_practice
+print("\nTask1\n")
+S = "spam"
+for x in S: print(ord(x), end = ' ')
+sum = 0
+for x in S: sum += ord(x)
+print(sum)
+print(map(ord, S))
+print([ord(x) for x in S])
+print("\nTask2\n")
+for i in range(50):
+    print('hello %d\n\a' % i)
+print("\nTask3\n")
+D = dict(a=1, b=2, c=3, d=100, e=45)
+print(sorted(D.values()))
+print("\nTask4\n")
+L = [2 ** x for x in range(7)]
+print(L)
+X = 5
+found = False
+i = 0
+if 2 ** X in L:
+    print('at index', L.index(2**X))
+else:
+    print(X, 'not found')
