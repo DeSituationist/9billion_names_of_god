@@ -13,7 +13,7 @@ def string_to_morse_code(input_str: str) -> str:
                 "'": ".----.", "-": "-....-", "/": "-..-.", "(": "-.--.",
                 ")": "-.--.-", '"': ".-..-.", "@": ".--.-.", "=": "-...-",
                 "+": ".-.-.", "!": "-.-.--", ' ': ' '}
-    return ''.join([morse_dict[s.lower()] + ' ' for s in input_str])
+    return ''.join(morse_dict[s.lower()] + ' ' for s in input_str)
 print(string_to_morse_code("HELLO, WORLD!"))
 print(string_to_morse_code("abcdefghijklmnopqrstuvwxyz,.:?'-/()\"@=+!"))
 print(string_to_morse_code(""))
