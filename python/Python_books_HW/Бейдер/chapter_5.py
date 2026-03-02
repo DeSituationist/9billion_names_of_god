@@ -1,0 +1,16 @@
+num1, num2 = 25000000, 25_000_000
+print(num1, num2)
+num = 175e3
+print(num)
+print(2e308)
+bas, exp = float(input('Eneter base: ')), float(input('Enter exponent: '))
+print(f'{bas} to the power of {exp} = {bas ** exp}')
+num = float(input('Enter a number: '))
+print(f'{num} rounded to 2 decimal places is {round(num, 2)}')
+num = float(input('Enter a number: '))
+print(f'The absolute value of {num} is {abs(num)}')
+num1, num2 = float(input('Enter a number: ')), float(input('Enter second number: '))
+print(f'Is difference between {num1} and {num2} an integer? {(num1 - num2).is_integer()}')
+print(f'{(3 ** .125):.3f}')
+print(f'{150000:,.2f}')
+print(f'{2 / 10:.0%}')
