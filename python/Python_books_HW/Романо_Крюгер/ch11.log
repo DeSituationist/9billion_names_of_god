@@ -1,0 +1,11 @@
+[04092026 07:50:47 PM] INFO: Starting to process "mylist"...
+[04092026 07:50:47 PM] DEBUG: Value at position 0 is 1
+[04092026 07:50:47 PM] DEBUG: Value at position 1 is 2
+[04092026 07:50:47 PM] DEBUG: Value at position 2 is 3
+[04092026 07:50:47 PM] ERROR: Faulty position: 3
+Traceback (most recent call last):
+  File "d:\9billion_names_of_god\python\Python_books_HW\Романо_Крюгер\chapter_11.py", line 40, in <module>
+    mylist[position],
+    ~~~~~~^^^^^^^^^^
+IndexError: list index out of range
+[04092026 07:50:47 PM] INFO: Done processing my list
