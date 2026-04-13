@@ -120,3 +120,8 @@ class User(Base):
         return secrets.compare_digest(stored_hash, computed_hash)
     @classmethod
     def hash_password(cls, password: str, salt: bytes = None):
+        salt, hashed = hash(password=password, salt=salt)
+        return f'{salt}{cls.pwd_separator}{hashed}'
+    def __repr__(self):
+        return (f'<{self.full_name}: id={self.id} role={self.role.name}>')
+    __str__ = __repr__
