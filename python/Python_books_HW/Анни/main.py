@@ -155,3 +155,67 @@ def save_order(order):
     return
 main_menu()
 '''
+from typing import *
+def main_menu():
+    print('Choose your order: ')
+    while True:
+        order = get_order()
+        print_order(order)
+        confirm = input('Is order correct? Press Y to submit: ')
+        if confirm in 'Yy':
+            save_order(order)
+            print('Thank you for your order: ')
+            print_order(order)
+            break
+        else:
+            print('Please choose again: ')
+            continue
+
+def read_menu(filename: str) -> List[str]:
+    names = []
+    with open(filename) as file:
+        names = file.readlines()
+        names = [name.strip() for name in names]
+    return names
+
+def get_item(choices: List[str], title: str, prompt: str) -> str:
+    print(title)
+    print('-' * 30)
+    for i, item in enumerate(choices, 1):
+        print(i, item)
+    while True:
+        try:
+            choice = input(prompt)
+            if not choice in 'xX':
+                choice = int(choice) - 1
+            else:
+                return ''
+            return choices[choice]
+        except ValueError:
+            print(f"Please enter a number (1 to {len(choices)}).")
+        except IndexError:
+            print(f"Please enter a number within 1 to {len(choices)}.")
+
+def get_order():
+    order = {}
+    drinks = read_menu('drinks.txt')
+    flavors = read_menu('flavors.txt')
+    toppings = read_menu('toppings.txt')
+    order['name'] = input('Please enter your name: ')
+    order['drink'] = get_item(drinks, 'Main drinks:', 'Enter drink number: ')
+    order['flavor'] = get_item(flavors, 'Flavors:', 'Enter flavor number: ')
+    order['topping'] = get_item(toppings, 'Toppings: ', 'Enter topping number: ')
+    return order
+
+def print_order(order):
+    print('Your order, ', order['name'])
+    print('Main drink: ', order['drink'])
+    print('Flavor: ', order['flavor'])
+    print('Topping: ', order['topping'])
+    print('Thanks for order')
+
+def save_order(order):
+    print('Saving your order...')
+    return
+
+main_menu()
