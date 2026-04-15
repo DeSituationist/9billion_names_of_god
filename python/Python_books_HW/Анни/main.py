@@ -130,4 +130,28 @@ print('Main drink: ', drink)
 print('Flavor: ', flavor)
 print('Topping: ', topping)
 print('Thanks for order')
+#Chapter_6
+def main_menu():
+    while True:
+        order = get_order()
+        print('Choose your order: ')
+        print_order(order)
+        confirm = input('Is order correct? Press Y to submit: ')
+        if confirm in 'Yy':
+            save_order(order)
+            print('Thank you for your order: ')
+            print_order(order)
+            break
+        else:
+            continue
+def get_order():
+    print('Getting your order...')
+    return {}
+def print_order(order):
+    print('Printing your order...')
+    return
+def save_order(order):
+    print('Saving your order...')
+    return
+main_menu()
 '''
