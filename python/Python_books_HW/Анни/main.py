@@ -288,3 +288,79 @@ def save_order(order):
 
 main_menu()
 '''
+from typing import *
+def main_menu():
+    orders = []
+    print('Choose your order: ')
+    while True:
+        order = get_order()
+        print_order(order)
+        confirm = input('Is order correct? Choose Add; Exit; End: ').lower()
+        if confirm == 'add':
+            orders.append(order)
+        elif confirm == 'exit':
+            orders.append(order)
+            save_order(orders)
+            break
+        else:
+            print(f"Unknown command, breaking without save")
+            break
+    orders = load_orders('orders.json')
+    for order in orders: print_order(order)
+
+def read_menu(filename: str) -> List[str]:
+    names = []
+    with open(filename) as file:
+        names = file.readlines()
+        names = [name.strip() for name in names]
+    return names
+
+def get_item(choices: List[str], title: str, prompt: str) -> str:
+    print(title)
+    print('-' * 30)
+    for i, item in enumerate(choices, 1):
+        print(i, item)
+    while True:
+        try:
+            choice = input(prompt)
+            if not choice in 'xX':
+                choice = int(choice) - 1
+            else:
+                return ''
+            return choices[choice]
+        except ValueError:
+            print(f"Please enter a number (1 to {len(choices)}).")
+        except IndexError:
+            print(f"Please enter a number within 1 to {len(choices)}.")
+
+def get_order():
+    order = {}
+    drinks = read_menu('drinks.txt')
+    flavors = read_menu('flavors.txt')
+    toppings = read_menu('toppings.txt')
+    order['name'] = input('Please enter your name: ')
+    order['drink'] = get_item(drinks, 'Main drinks:', 'Enter drink number: ')
+    order['flavor'] = get_item(flavors, 'Flavors:', 'Enter flavor number: ')
+    order['topping'] = get_item(toppings, 'Toppings: ', 'Enter topping number: ')
+    return order
+
+def print_order(order):
+    print('-' * 20 + 'New Order' + '-' * 20)
+    print('Your order, ', order['name'])
+    print('Main drink: ', order['drink'])
+    print('Flavor: ', order['flavor'])
+    print('Topping: ', order['topping'])
+    print('Thanks for order')
+
+def save_order(orders):
+    import json 
+    with open('orders.json', 'w') as file:
+        json.dump(orders, file, indent=4)
+
+def load_orders(filename):
+    import json 
+    with open(filename) as fl:
+        orders = json.load(fl)
+        return orders
+
+main_menu()
