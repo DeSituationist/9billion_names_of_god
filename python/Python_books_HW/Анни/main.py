@@ -10,7 +10,7 @@ print('Main drink: ', drink)
 print('Flavor: ', flavor)
 print('Topping: ', topping)
 print('Thanks for order')
-chapter_2
+#Chapter_2
 drinks = ['hot chocolate', 'coffee', 'coffee without coffein']
 flavors = ['caramel', 'vanilla', 'mint', 'raspberry', 'without toppings']
 toppings = ['chocolate', 'cinnamon', 'caramel']
@@ -30,5 +30,28 @@ print('Your order: ')
 print('Main drink: ', drinks[drink])
 print('Flavor: ', flavors[flavor])
 print('Topping: ', toppings[topping])
+print('Thanks for order')
+#Chapter_3
+from typing import *
+
+drinks = ['hot chocolate', 'coffee', 'coffee without coffein']
+flavors = ['caramel', 'vanilla', 'mint', 'raspberry', 'without toppings']
+toppings = ['chocolate', 'cinnamon', 'caramel']
+
+def menu(choices: List[str], title: str, prompt: str) -> str:
+    print(title)
+    print('-' * 30)
+    for i, item in enumerate(choices, 1):
+        print(i, item)
+    choice = int(input(prompt)) - 1
+    return choices[choice]
+
+drink = menu(drinks, 'Main drinks:', 'Enter drink number: ')
+flavor = menu(flavors, 'Flavors:', 'Enter flavor number: ')
+topping = menu(toppings, 'Toppings: ', 'Enter topping number: ')
+print('Your order: ')
+print('Main drink: ', drink)
+print('Flavor: ', flavor)
+print('Topping: ', topping)
 print('Thanks for order')
 '''
