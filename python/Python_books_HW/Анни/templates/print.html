@@ -1,7 +1,8 @@
 {% extends 'base.html' %}
 {% block content %}
-<h1>Your order: </h1>
-<p>Your drink: <strong>{{drink}}</strong></p>
-
+<h1>Thank you for ordering {{order['name']}}:</h1>
+<p>Your drink: <strong>{{order['drink']}}</strong></p>
+<p>Your flavor: <strong>{{order['flavor']}}</strong></p>
+<p>Your topping: <strong>{{order['topping']}}</strong></p>
 <form action="/order"><input type="submit" value="New Order"></form>
 {% endblock %}

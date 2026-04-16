@@ -1,14 +1,20 @@
 [
     {
-        "name": "il",
-        "drink": "hot chocolate",
-        "flavor": "caramel",
-        "topping": "chocolate"
+        "name": "123",
+        "drink": "coffee",
+        "flavor": "without toppings",
+        "topping": "caramel"
     },
     {
-        "name": "dd",
-        "drink": "coffee",
-        "flavor": "vanilla",
-        "topping": "cinnamon"
+        "name": "Janny",
+        "drink": "nothing",
+        "flavor": "no flavor",
+        "topping": "no toping"
+    },
+    {
+        "name": "Ilia",
+        "drink": "nothing",
+        "flavor": "no flavor",
+        "topping": "no toping"
     }
 ]
