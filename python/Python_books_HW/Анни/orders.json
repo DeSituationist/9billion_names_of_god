@@ -16,5 +16,29 @@
         "drink": "nothing",
         "flavor": "no flavor",
         "topping": "no toping"
+    },
+    {
+        "name": "Maria",
+        "drink": "hot chocolate",
+        "flavor": "mint",
+        "topping": "caramel"
+    },
+    {
+        "name": "Gosha",
+        "drink": "coffee",
+        "flavor": "raspberry",
+        "topping": "chocolate"
+    },
+    {
+        "name": "pisko4pok",
+        "drink": "hot chocolate",
+        "flavor": "without toppings",
+        "topping": "chocolate"
+    },
+    {
+        "name": "Макс",
+        "drink": "coffee",
+        "flavor": "raspberry",
+        "topping": "cinnamon"
     }
 ]

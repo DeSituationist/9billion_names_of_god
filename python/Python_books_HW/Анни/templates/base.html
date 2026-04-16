@@ -52,6 +52,7 @@
         form {
             display: flex;
             flex-direction: column;
+            padding-top: 20px;
             gap: 20px;
         }
 
@@ -138,6 +139,54 @@
             color: #94a3b8;
             font-weight: 400;
             opacity: 1;
+        }
+        table {
+            width: 100%;
+            border-collapse: separate;
+            border-spacing: 0;
+            margin: 20px 0;
+            font-size: 16px;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.03);
+            border: 1px solid #e2e8f0;
+        }
+
+        th, td {
+            padding: 14px 16px;
+            text-align: left;
+            border-bottom: 1px solid #e9eef2;
+        }
+
+        th {
+            background-color: #f8fafc;
+            color: #1e293b;
+            font-weight: 600;
+            font-size: 15px;
+            letter-spacing: 0.3px;
+            text-transform: uppercase;
+            border-bottom: 2px solid #cbd5e1;
+        }
+
+        tr:last-child td {
+            border-bottom: none;
+        }
+
+        tbody tr:hover {
+            background-color: #f9fbfd;
+        }
+
+        td {
+            color: #334155;
+            font-weight: 400;
+        }
+
+        /* Empty state message (optional) */
+        .no-orders {
+            text-align: center;
+            padding: 30px;
+            color: #64748b;
+            font-style: italic;
         }
     </style>
 </head>
