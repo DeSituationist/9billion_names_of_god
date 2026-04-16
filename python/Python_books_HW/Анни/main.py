@@ -287,7 +287,7 @@ def save_order(order):
         json.dump(orders, file, indent=4)
 
 main_menu()
-'''
+#Chapter_9
 from typing import *
 def main_menu():
     orders = []
@@ -364,3 +364,18 @@ def load_orders(filename):
         return orders
 
 main_menu()
+'''
+from flask import Flask, render_template, request
+
+app = Flask(__name__)
+
+@app.route('/order', methods = ('GET', 'POST'))
+def order():
+    if request.method == 'POST':
+        drink = request.form['drink']
+        print('Drink ' + drink + ' was chosen') 
+        return render_template('print.html', drink=drink)
+    return render_template('forms.html')
+
+if __name__ == '__main__':
+    app.run(debug=True)

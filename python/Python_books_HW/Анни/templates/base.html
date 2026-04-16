@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Beverage Order</title>
+    <style>
+        /* Simple, clean styling – no animations, no JS */
+        body {
+            font-family: 'Segoe UI', Roboto, Arial, sans-serif;
+            background-color: #f5f7fa;
+            margin: 0;
+            padding: 40px 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            box-sizing: border-box;
+        }
+
+        .container {
+            background-color: white;
+            max-width: 500px;
+            width: 100%;
+            padding: 30px 25px;
+            border-radius: 16px;
+            box-shadow: 0 6px 18px rgba(0, 0, 0, 0.05);
+            border: 1px solid #e9eef2;
+        }
+
+        h1 {
+            margin-top: 0;
+            margin-bottom: 24px;
+            color: #2c3e50;
+            font-weight: 500;
+            font-size: 28px;
+            border-bottom: 2px solid #e2e8f0;
+            padding-bottom: 12px;
+        }
+
+        p {
+            font-size: 18px;
+            color: #334155;
+            margin: 20px 0;
+        }
+
+        strong {
+            color: #0f172a;
+            font-weight: 600;
+        }
+
+        form {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        select, input[type="submit"], button, .btn {
+            font-size: 16px;
+            padding: 12px 16px;
+            border-radius: 10px;
+            border: 1px solid #cbd5e1;
+            background-color: white;
+            color: #1e293b;
+            cursor: pointer;
+            transition: background-color 0.15s ease;
+            font-weight: 500;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        select {
+            background-color: #fafcfc;
+            border: 1px solid #cbd5e1;
+            appearance: none;
+            background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="%234b5563" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>');
+            background-repeat: no-repeat;
+            background-position: right 16px center;
+            background-size: 16px;
+        }
+
+        input[type="submit"], button, .btn {
+            background-color: #2c3e50;
+            color: white;
+            border: none;
+            font-weight: 600;
+            letter-spacing: 0.3px;
+        }
+
+        input[type="submit"]:hover, button:hover, .btn:hover {
+            background-color: #1e2b37;
+        }
+
+        /* Secondary button style (used on print.html) */
+        .btn-outline {
+            background-color: white;
+            color: #2c3e50;
+            border: 1px solid #cbd5e1;
+        }
+
+        .btn-outline:hover {
+            background-color: #f1f5f9;
+            border-color: #94a3b8;
+        }
+
+        /* For the "New Order" form on print.html */
+        form.inline-form {
+            margin-top: 30px;
+        }
+
+        /* Simple focus styles for accessibility */
+        select:focus, input:focus, button:focus {
+            outline: 2px solid #94a3b8;
+            outline-offset: 2px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        {% block content %}
+        <!-- Child templates will insert content here -->
+        {% endblock %}
+    </div>
+</body>
+</html>

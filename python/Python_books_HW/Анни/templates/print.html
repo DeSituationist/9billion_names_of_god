@@ -1,0 +1,7 @@
+{% extends 'base.html' %}
+{% block content %}
+<h1>Your order: </h1>
+<p>Your drink: <strong>{{drink}}</strong></p>
+
+<form action="/order"><input type="submit" value="New Order"></form>
+{% endblock %}
