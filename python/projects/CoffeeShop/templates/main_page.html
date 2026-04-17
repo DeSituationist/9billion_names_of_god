@@ -2,10 +2,10 @@
 
 {% block content %}
 <h1 class="centered">Welcome to the Coffee Shop</h1>
-<p style="text-align: center; color: #475569; margin-bottom: 10px;">Choose how you'd like to continue</p>
+<p style="margin-bottom: 10px;">Choose how you'd like to continue</p>
 
 <div class="row">
-    <!-- Guest Column -->
+    <!-- Guest -->
     <div class="column">
         <h2>👤 Guest</h2>
         <ul>
@@ -17,12 +17,12 @@
         <a href="{{ url_for('show_order') }}" class="btn">Continue as Guest</a>
     </div>
 
-    <!-- Registered User Column -->
+    <!-- User -->
     <div class="column">
         <h2>👥 User</h2>
         <div class="profile-pic">📷</div>
-        <p style="margin: 8px 0 4px; font-weight: 600;">Your Name</p>
-        <p style="margin: 0 0 16px; font-size: 14px; color: #64748b;">user@example.com</p>
+        <p>Your Name</p>
+        <p>user@example.com</p>
         <ul>
             <li>✓ Place orders</li>
             <li>✓ View your order history</li>
@@ -30,14 +30,14 @@
             <li>✓ Profile picture & settings</li>
         </ul>
         <a href="{{ url_for('show_order') }}" class="btn">Sign In / Dashboard</a>
-        <a href="{{ url_for('show_order') }}" class="btn btn-outline" style="margin-top: 12px;">Create Account</a>
+        <a href="{{ url_for('show_order') }}" class="btn" style="margin-top: 12px;">Create Account</a>
     </div>
 
-    <!-- Admin Column -->
+    <!-- Admin -->
     <div class="column">
         <h2>🛠️ Admin</h2>
         <div class="profile-pic">👑</div>
-        <p style="margin: 8px 0 4px; font-weight: 600;">Administrator</p>
+        <p>Administrator</p>
         <ul>
             <li>✓ All user privileges</li>
             <li>✓ View all orders</li>
@@ -48,7 +48,5 @@
     </div>
 </div>
 
-<p style="text-align: center; margin-top: 30px; color: #94a3b8; font-size: 14px;">
-    Это демо-версия система авторизации еще не создана.
-</p>
+<p>Это демо-версия – система авторизации еще не создана.</p>
 {% endblock %}

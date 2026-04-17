@@ -10,19 +10,13 @@ ORDERS_DB = os.path.join(BASE_DIR, 'orders.db')
 
 logging.basicConfig(level=logging.INFO)
 
+#DataBase
 con = sqlite3.connect(ORDERS_DB)
 cur = con.cursor()
 cur.execute('CREATE TABLE IF NOT EXISTS orders(name, drink, flavor, topping);')
 
+#Flask app
 app = Flask(__name__)
-
-def read_menu(filename: str) -> List[str]:
-    names = []
-    filepath = os.path.join(BASE_DIR, filename)
-    with open(filepath, 'r', encoding='utf-8') as file:
-        names = file.readlines()
-        names = [name.strip() for name in names]
-    return names
 
 @app.route('/order', methods = ['GET'])
 def show_order():
@@ -57,9 +51,16 @@ def confirm_order():
 def home():
     print("Home route triggered!")
     return render_template('main_page.html')
-@app.route('/ping')
-def ping():
-    return "pong"
+
+#Python functions
+def read_menu(filename: str) -> List[str]:
+    names = []
+    filepath = os.path.join(BASE_DIR, filename)
+    with open(filepath, 'r', encoding='utf-8') as file:
+        names = file.readlines()
+        names = [name.strip() for name in names]
+    return names
+
 def save_order(order):
     con = sqlite3.connect(ORDERS_DB)
     cur = con.cursor()
@@ -82,7 +83,17 @@ def get_menu():
     toppings = read_menu('toppings.txt')
     return drinks, flavors, toppings
 
+#Start the server
 if __name__ == '__main__':
-    print(os.path.exists(os.path.join(BASE_DIR, 'templates', 'main_page.html')))
-    #app.run(host='0.0.0.0', port=5000, debug=True)
+    # Gather all files in templates/ and static/ recursively
+    extra_dirs = ['templates', 'static']
+    extra_files = []
+    for extra_dir in extra_dirs:
+        for dirname, _, filenames in os.walk(extra_dir):
+            for filename in filenames:
+                extra_files.append(os.path.join(dirname, filename))
+
+    
+    #app.run( host='0.0.0.0', port=5000, debug=True, extra_files=extra_files)
+    
     serve(app, host='0.0.0.0', port=5000)

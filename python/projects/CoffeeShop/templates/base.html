@@ -3,13 +3,26 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Beverage Order</title>
+    <title>Local Cafe</title>
+    <link rel="icon" type="image/png" href="{{ url_for('static', filename='images/coffee_shop.png') }}">
     <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
 </head>
 <body>
+    <div class="falling-container">
+        <div class="falling-item" style="left: 5%; animation-duration: 12s; animation-delay: 0s;"></div>
+        <div class="falling-item" style="left: 15%; animation-duration: 15s; animation-delay: -2s;"></div>
+        <div class="falling-item" style="left: 25%; animation-duration: 10s; animation-delay: -5s;"></div>
+        <div class="falling-item" style="left: 35%; animation-duration: 18s; animation-delay: -7s;"></div>
+        <div class="falling-item" style="left: 45%; animation-duration: 14s; animation-delay: -3s;"></div>
+        <div class="falling-item" style="left: 55%; animation-duration: 11s; animation-delay: -8s;"></div>
+        <div class="falling-item" style="left: 65%; animation-duration: 16s; animation-delay: -1s;"></div>
+        <div class="falling-item" style="left: 75%; animation-duration: 13s; animation-delay: -4s;"></div>
+        <div class="falling-item" style="left: 85%; animation-duration: 20s; animation-delay: -6s;"></div>
+        <div class="falling-item" style="left: 95%; animation-duration: 17s; animation-delay: -9s;"></div>
+    </div>
     <div class="container">
         {% block content %}
-        <!-- Child templates will insert content here -->
+        <!-- For child pages -->
         {% endblock %}
     </div>
 </body>

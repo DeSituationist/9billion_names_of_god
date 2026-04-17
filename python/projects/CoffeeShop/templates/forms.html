@@ -17,11 +17,11 @@
         {% endfor %}
     </select>
     <select name="topping">
-        <option value="no toping">- Choose a toping -</option>
+        <option value="no topping">- Choose a topping -</option>
         {% for topping in toppings %}
         <option value="{{ topping }}">{{ topping }}</option>
         {% endfor %}
     </select>
-    <input type="submit" value="Confirm">
+    <input class="btn forms" type="submit" value="Confirm">
 </form>
 {% endblock %}
