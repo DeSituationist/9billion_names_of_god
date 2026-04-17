@@ -30,7 +30,12 @@
 <div class="button-group">
     <a href="{{ url_for('show_order') }}" class="btn btn-accent">🆕 Create New Order</a>
     <a href="{{ url_for('list') }}" class="btn btn-accent">📋 View My Orders</a>
+    {% if user.rank == 'admin' %}
+    <a href="{{ url_for('stats') }}" class="btn btn-accent">🛒 Check shop statistics</a>
+    {% endif %}
 </div>
+
+
 
 <!-- Logout Link -->
 <div class="logout-link">

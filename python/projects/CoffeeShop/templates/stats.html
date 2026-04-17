@@ -1,0 +1,160 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h1 class="centered">📊 Sales Statistics</h1>
+
+<!-- Tab Navigation -->
+<div class="tabs">
+    <button class="tab-btn active" data-tab="drinks">☕ Drinks</button>
+    <button class="tab-btn" data-tab="flavors">🍦 Flavors</button>
+    <button class="tab-btn" data-tab="toppings">🍫 Toppings</button>
+</div>
+
+<!-- Chart Containers -->
+<div id="drinks-chart" class="chart-container active">
+    <canvas id="drinkChart"></canvas>
+</div>
+<div id="flavors-chart" class="chart-container">
+    <canvas id="flavorChart"></canvas>
+</div>
+<div id="toppings-chart" class="chart-container">
+    <canvas id="toppingChart"></canvas>
+</div>
+
+<a href="{{ url_for('personal_page') }}" class="btn btn-accent">Back</a>
+
+<script type="application/json" id="stats-data">
+{
+    "drinks": {{ drinks_stats | tojson | safe }},
+    "flavors": {{ flavors_stats | tojson | safe }},
+    "toppings": {{ toppings_stats | tojson | safe }}
+}
+</script>
+
+<script>
+    const statsData = JSON.parse(document.getElementById('stats-data').textContent);
+    const drinkData = statsData.drinks || [];
+    const flavorData = statsData.flavors || [];
+    const toppingData = statsData.toppings || [];
+
+    console.log('Drink data:', drinkData);
+    console.log('Flavor data:', flavorData);
+    console.log('Topping data:', toppingData);
+
+    let drinkChart, flavorChart, toppingChart;
+
+    const chartOptions = {
+        responsive: true,
+        maintainAspectRatio: true,
+        plugins: {
+            legend: { display: false },
+            tooltip: {
+                backgroundColor: '#6F4E37',
+                titleColor: '#e4a762',
+                bodyColor: '#e4a762'
+            }
+        },
+        scales: {
+            y: {
+                beginAtZero: true,
+                ticks: { stepSize: 1, color: '#000' },
+                grid: { color: '#ab7743' },
+                title: {
+                    display: true,
+                    text: 'Number of Orders',
+                    color: '#000'
+                }
+            },
+            x: {
+                ticks: { color: '#000' },
+                grid: { display: false }
+            }
+        }
+    };
+
+    function createChart(canvasId, data, bgColor) {
+        const canvas = document.getElementById(canvasId);
+        if (!canvas) {
+            console.error(`Canvas with id "${canvasId}" not found`);
+            return null;
+        }
+        const ctx = canvas.getContext('2d');
+        if (!data.length) {
+            console.warn(`No data for ${canvasId}, displaying empty chart message.`);
+            // Optionally display a message inside the container
+            const container = canvas.closest('.chart-container');
+            if (container) {
+                container.innerHTML = '<p style="text-align:center; padding:40px;">No data for this category yet.</p>';
+            }
+            return null;
+        }
+        try {
+            return new Chart(ctx, {
+                type: 'bar',
+                data: {
+                    labels: data.map(d => d.name),
+                    datasets: [{
+                        data: data.map(d => d.count),
+                        backgroundColor: bgColor,
+                        borderColor: '#000',
+                        borderWidth: 1,
+                        borderRadius: 6
+                    }]
+                },
+                options: chartOptions
+            });
+        } catch (error) {
+            console.error(`Failed to create chart for ${canvasId}:`, error);
+            return null;
+        }
+    }
+
+    function initCharts() {
+        // Check overall data presence
+        if (!drinkData.length && !flavorData.length && !toppingData.length) {
+            document.querySelector('.tabs').insertAdjacentHTML('afterend',
+                '<p style="text-align:center; margin-top:30px;">No order data yet.</p>');
+            return;
+        }
+
+        drinkChart = createChart('drinkChart', drinkData, '#e4a762');
+        flavorChart = createChart('flavorChart', flavorData, '#ab7743');
+        toppingChart = createChart('toppingChart', toppingData, '#8d6447');
+    }
+
+    function setupTabs() {
+        const tabButtons = document.querySelectorAll('.tab-btn');
+        const chartContainers = document.querySelectorAll('.chart-container');
+
+        tabButtons.forEach(btn => {
+            btn.addEventListener('click', function() {
+                const tabName = this.dataset.tab;
+
+                tabButtons.forEach(b => b.classList.remove('active'));
+                this.classList.add('active');
+
+                chartContainers.forEach(container => {
+                    container.classList.remove('active');
+                });
+
+                const activeContainer = document.getElementById(tabName + '-chart');
+                if (activeContainer) {
+                    activeContainer.classList.add('active');
+                }
+
+                
+                setTimeout(() => {
+                    if (tabName === 'drinks' && drinkChart) drinkChart.resize();
+                    if (tabName === 'flavors' && flavorChart) flavorChart.resize();
+                    if (tabName === 'toppings' && toppingChart) toppingChart.resize();
+                }, 70);
+            });
+        });
+    }
+
+    window.onload = function() {
+        initCharts();
+        setupTabs();
+    };
+</script>
+{% endblock %}

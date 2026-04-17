@@ -115,7 +115,7 @@ select {
     background-position: right 16px center;
     background-size: 16px;
     cursor: pointer;
-    background-color: var(--color-accent);   /* Keep your accent background */
+    background-color: var(--color-accent);
     text-align: center;
 }
 
@@ -124,7 +124,7 @@ input[type="email"]:focus,
 input[type="password"]:focus,
 input[type="text"]:focus,
 select:focus {
-    background-color: var(--color-second-main);
+    background-color: var(--color-accent);
 }
 
 input[type="email"]::placeholder,
@@ -164,7 +164,8 @@ button,
 input[type="submit"]:hover,
 button:hover,
 .btn:hover {
-    background-color: var(--color-btn-hover);
+    background-color: var(--color-bg);
+    color: var(--color-second-main);
 }
 
 /* Inline form (e.g., "New Order" button) */
@@ -414,4 +415,51 @@ td {
         transform: translateY(110vh) rotate(360deg);
         opacity: 0;
     }
+}
+/*Stats*/
+.tabs {
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+    margin: 30px 0 20px;
+}
+
+.tab-btn {
+    background-color: var(--color-accent);
+    color: var(--color-main-black);
+    border: 1px solid var(--color-main-black);
+    padding: 10px 24px;
+    border-radius: 30px;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.15s ease;
+}
+
+.tab-btn.active {
+    background-color: var(--color-second-main);
+    transform: scale(1.05);
+    box-shadow: var(--shadow-sm);
+}
+
+.tab-btn:hover {
+    background-color: var(--color-btn-hover);
+}
+
+.chart-container {
+    display: none;
+    margin: 20px 0;
+}
+
+.chart-container.active {
+    display: block;
+}
+
+canvas {
+    max-height: 400px;
+    width: 100% !important;
+    background-color: rgba(255,255,255,0.3);
+    border-radius: 16px;
+    padding: 16px;
+    border: 1px solid var(--color-main-black);
 }

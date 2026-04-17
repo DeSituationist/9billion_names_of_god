@@ -104,6 +104,13 @@ def personal_page():
     user = session['user']
     return render_template('personal_page.html', user=user)
 
+@app.route('/statistics', methods=['GET', 'POST'])
+def stats():
+    drinks_stats = get_drinks_stats()
+    flavors_stats = get_flavor_stats()
+    toppings_stats = get_topping_stats()
+    return render_template('stats.html', drinks_stats=drinks_stats, flavors_stats=flavors_stats, toppings_stats=toppings_stats)
+
 @app.route('/')
 def home():
     print("Home route triggered!")
@@ -117,6 +124,45 @@ def read_menu(filename: str) -> List[str]:
         names = file.readlines()
         names = [name.strip() for name in names]
     return names
+
+def get_drinks_stats():
+    con = sqlite3.connect(ORDERS_DB)
+    cur = con.cursor()
+    cur.execute('''
+        SELECT drink, COUNT(*) as count
+        FROM orders
+        GROUP BY drink
+        ORDER BY count DESC
+    ''')
+    rows = cur.fetchall()
+    con.close()
+    return [{'name': row[0], 'count': row[1]} for row in rows]
+
+def get_flavor_stats():
+    con = sqlite3.connect(ORDERS_DB)
+    cur = con.cursor()
+    cur.execute('''
+        SELECT flavor, COUNT(*) as count
+        FROM orders
+        GROUP BY flavor
+        ORDER BY count DESC
+    ''')
+    rows = cur.fetchall()
+    con.close()
+    return [{'name': row[0], 'count': row[1]} for row in rows]
+
+def get_topping_stats():
+    con = sqlite3.connect(ORDERS_DB)
+    cur = con.cursor()
+    cur.execute('''
+        SELECT topping, COUNT(*) as count
+        FROM orders
+        GROUP BY topping
+        ORDER BY count DESC
+    ''')
+    rows = cur.fetchall()
+    con.close()
+    return [{'name': row[0], 'count': row[1]} for row in rows]
 
 def check_login(nickname, password):
     """
@@ -209,6 +255,6 @@ if __name__ == '__main__':
             for filename in filenames:
                 extra_files.append(os.path.join(dirname, filename))
     
-    app.run( host='0.0.0.0', port=5000, debug=True, extra_files=extra_files)
+    #app.run( host='0.0.0.0', port=5000, debug=True, extra_files=extra_files)
     
-    #serve(app, host='0.0.0.0', port=5000)
+    serve(app, host='0.0.0.0', port=5000)
