@@ -5,23 +5,26 @@
 <form action="/order/confirm" method="post">
     <input type="text" name="name" placeholder="Enter your name:">
     <select name="drink">
-        <option value="nothing">- Choose a drink -</option>
+        <option value="nothing" disabled selected>- Choose a drink -</option>
         {% for drink in drinks %}
         <option value="{{ drink }}">{{ drink }}</option>
         {% endfor %}
     </select>
     <select name="flavor">
-        <option value="no flavor">- Choose a flavor -</option>
+        <option value="no flavor" disabled selected>- Choose a flavor -</option>
         {% for flavor in flavors %}
         <option value="{{ flavor }}">{{ flavor }}</option>
         {% endfor %}
     </select>
     <select name="topping">
-        <option value="no topping">- Choose a topping -</option>
+        <option value="no topping" disabled selected>- Choose a topping -</option>
         {% for topping in toppings %}
         <option value="{{ topping }}">{{ topping }}</option>
         {% endfor %}
     </select>
-    <input class="btn forms" type="submit" value="Confirm">
+    <div class="button-group">
+        <input class="btn forms" type="submit" value="Confirm">
+        <a href="{{ url_for('personal_page') }}" class="btn btn-accent">Back</a>
+    </div>
 </form>
 {% endblock %}

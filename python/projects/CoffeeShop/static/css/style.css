@@ -290,6 +290,91 @@ td {
     border: 2px solid var(--color-main-black);
 }
 
+.info-card p {
+    border-bottom: 1px dashed var(--color-main-black);
+    padding-bottom: 8px;
+}
+
+.info-card p:last-child {
+    border-bottom: none;
+}
+
+/* ----- Personal Page Styles ----- */
+.profile-pic-large {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    background-color: var(--color-second-main);
+    margin: 0 auto 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--color-muted);
+    font-weight: 500;
+    border: 2px solid var(--color-main-black);
+}
+
+.info-card {
+    background-color: var(--color-accent);
+    border-radius: 16px;
+    padding: 20px;
+    margin-bottom: 30px;
+    border: 1px solid var(--color-main-black);
+}
+
+.info-row {
+    margin: 10px 0;
+    text-align: left;
+    display: flex;
+    justify-content: space-between;
+    border-bottom: 1px dashed var(--color-main-black);
+    padding-bottom: 8px;
+}
+
+.info-row:last-child {
+    border-bottom: none;
+    padding-bottom: 0;
+}
+
+.info-row strong {
+    color: var(--color-main-black);
+    font-weight: 600;
+}
+
+.info-row span {
+    color: var(--color-main-black);
+}
+
+.button-group {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.btn-accent {
+    background-color: var(--color-accent);
+    border: 1px solid var(--color-main-black);
+}
+
+.btn-accent:hover {
+    background-color: var(--color-btn-hover);
+}
+
+.logout-link {
+    margin-top: 30px;
+    text-align: center;
+}
+
+.logout-link a {
+    color: var(--color-main-black);
+    font-weight: 600;
+    text-decoration: none;
+}
+
+.logout-link a:hover {
+    text-decoration: underline;
+}
+
 /* ----- Falling Coffee Animation (Background) ----- */
 .falling-container {
     position: fixed;

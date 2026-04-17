@@ -4,16 +4,28 @@
 <h1 class="centered">Create Account</h1>
 <p>☕ Join the Coffee Club ☕</p>
 
+{% if error %}
+<p style="color: red; font-weight: 600;">{{ error }}</p>
+{% endif %}
+{% if success %}
+<p style="color: green; font-weight: 600;">{{ success }}</p>
+{% endif %}
+
 <form action="{{ url_for('account_creation') }}" method="post">
     <input type="text" name="username" placeholder="Username" required>
     <input type="email" name="email" placeholder="Email address" required>
     <input type="password" name="password" placeholder="Password" required>
     <input type="password" name="confirm_password" placeholder="Confirm password" required>
+    <select name="rank" required>
+        <option value="" disabled selected>- Select account type -</option>
+        <option value="user">👤 User</option>
+        <option value="admin">🛠️ Admin</option>
+    </select>
     <input class="btn forms" type="submit" value="Sign Up">
 </form>
 
 <p style="margin-top: 20px; font-size: 16px;">
     Already have an account? 
-    <a href="{{ url_for('show_order') }}" style="color: var(--color-main-black); font-weight: 600;">Log in</a>
+    <a href="{{ url_for('login') }}" style="color: var(--color-main-black); font-weight: 600;">Log in</a>
 </p>
 {% endblock %}

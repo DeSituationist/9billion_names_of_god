@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h1 class="centered">My Profile</h1>
+
+<!-- Profile Picture Placeholder -->
+<div class="profile-pic-large">📷</div>
+
+<!-- Personal Information -->
+<div class="info-card">
+    <div class="info-row">
+        <strong>Nickname:</strong>
+        <span>{{ user.nickname }}</span>
+    </div>
+    <div class="info-row">
+        <strong>Email:</strong>
+        <span>{{ user.email }}</span>
+    </div>
+    <div class="info-row">
+        <strong>Password:</strong>
+        <span>••••••••</span>
+    </div>
+    <div class="info-row">
+        <strong>Rank:</strong>
+        <span>{{ user.rank }}</span>
+    </div>
+</div>
+
+<!-- Action Buttons -->
+<div class="button-group">
+    <a href="{{ url_for('show_order') }}" class="btn btn-accent">🆕 Create New Order</a>
+    <a href="{{ url_for('list') }}" class="btn btn-accent">📋 View My Orders</a>
+</div>
+
+<!-- Logout Link -->
+<div class="logout-link">
+    <a href="{{ url_for('home') }}">Log out</a>
+</div>
+{% endblock %}
