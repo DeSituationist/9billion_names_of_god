@@ -7,13 +7,17 @@ import sqlite3
 
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 ORDERS_DB = os.path.join(BASE_DIR, 'orders.db')
+ACCOUNT_DB = os.path.join(BASE_DIR, 'accounts.db')
 
 logging.basicConfig(level=logging.INFO)
 
-#DataBase
+#DataBases
 con = sqlite3.connect(ORDERS_DB)
 cur = con.cursor()
 cur.execute('CREATE TABLE IF NOT EXISTS orders(name, drink, flavor, topping);')
+con = sqlite3.connect(ACCOUNT_DB)
+cur = con.cursor()
+cur.execute('CREATE TABLE IF NOT EXISTS accounts(nickname, name, email, password);')
 
 #Flask app
 app = Flask(__name__)
@@ -46,6 +50,10 @@ def confirm_order():
     print(f"Order saved: {order}")
 
     return render_template('print.html', order=order)
+
+@app.route('/registration',  methods=['GET', 'POST'])
+def account_creation():
+    return render_template('create_acc.html')
 
 @app.route('/')
 def home():
@@ -94,6 +102,6 @@ if __name__ == '__main__':
                 extra_files.append(os.path.join(dirname, filename))
 
     
-    #app.run( host='0.0.0.0', port=5000, debug=True, extra_files=extra_files)
+    app.run( host='0.0.0.0', port=5000, debug=True, extra_files=extra_files)
     
-    serve(app, host='0.0.0.0', port=5000)
+    #serve(app, host='0.0.0.0', port=5000)
