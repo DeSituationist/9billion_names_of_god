@@ -263,8 +263,154 @@ Circle = {
     '_parent': Shape,
     '_new': circle_new,
 }
-examples  =[make(Square, 'sq', 3), make(Circle, 'ci', 2)]
+examples  = [make(Square, 'sq', 3), make(Circle, 'ci', 2)]
 for ex in examples:
     n = ex['name']
     d = call(ex, 'density', 5)
     print(f'{n}: {d:.2f}')
+# Practice
+print('-' * 35 + 'TASK_1' + '-' * 35)
+def call(thing, method_name, *args, **kwargs):
+    method = find(thing['_class'], method_name)
+    return method(thing, *args, **kwargs)
+print('-' * 35 + 'TASK_2' + '-' * 35)
+import random
+import string
+def introduction_person(obj):
+    return f"Hello, {obj['_class']['_classname']} nice to know that your name is {obj['name']}"
+
+def introduction_employee(obj): 
+    return f"Hello, {obj['_class']['_classname']} with name {obj['name']} keep up the good work!"
+
+def introduction_engineer(obj): # Сбор всех методов родителей
+    greeting = ''
+    for parent in obj['_class']['_parents']:
+        greeting += parent['introduction'](obj) + ' '
+    return greeting
+
+def create_name(len = 10):
+    return ''.join(random.choices(string.ascii_letters, k=len))
+
+def create_person(name = None):
+    if name is None:
+        name = create_name()
+    return {
+        '_class': Person,
+        'name': name,
+    }
+
+def create_employee(name = None):
+    if name is None:
+        name = create_name()
+    return {
+        '_class': Employee,
+        'name': name,
+    }
+
+def create_engineer(name = None):
+    if name is None:
+        name = create_name()
+    return {
+        '_class': Engineer,
+        'name': name,
+    }
+
+Person = {
+    '_classname': 'Person',
+    '_parent': None,
+    'introduction': introduction_person,
+    '_new': create_person,
+}
+
+Employee = {
+    '_classname': 'Employee',
+    '_parent': Person,
+    'introduction': introduction_employee,
+    '_new': create_employee,
+}
+
+Engineer = {
+    '_parents': [Employee, Person],
+    '_classname': 'Engineer',
+    'introduction': introduction_engineer,
+    '_new': create_engineer,
+}
+
+examples = [make(Person, 'Ilia'), make(Employee), make(Engineer)]
+for ex in examples:
+    print(call(ex, 'introduction'))
+print('-' * 35 + 'TASK_3' + '-' * 35)
+'''
+Метод класс - принимает сам класс (cls) и работает с ним вместо (self). Объявляются с помощью декортара @classmethod.
+Чаще всего работает с атрибутами класса
+Статический метод - не принимает ни класс(cls) ни (self), работает с переданными аргументами.
+Добавим оба в две новых реализации класса engineer
+'''
+# Статический метод
+Engineer = {
+    '_parents': [Employee, Person],
+    '_classname': 'Engineer',
+    'introduction': introduction_engineer,
+    '_new': create_engineer,
+    'static_method': lambda age: 'Young' if age < 18 else 'Mature',
+}
+# Метод класса
+def change_name(cls, new_name = None):
+    cls['_classname'] = new_name
+
+Engineer = {
+    '_parents': [Employee, Person],
+    '_classname': 'Engineer',
+    'introduction': introduction_engineer,
+    '_new': create_engineer,
+    'class_method': change_name,
+}
+Engineer['class_method'](Engineer, 'NewName')
+print(Engineer['_classname'])
+print('-' * 35 + 'TASK_4' + '-' * 35)
+# Добавляем type и isinstance
+def isinstance_dict(obj, other):
+    obj_class = obj['_class']
+    if obj_class is other:
+        return True
+
+    if '_parents' in obj_class: 
+        if any(parent == other for parent in obj_class['_parents']): return True
+    return False
+
+Engineer = {
+    '_parents': [Employee, Person],
+    '_classname': 'Engineer',
+    'introduction': introduction_engineer,
+    '_new': create_engineer,
+    'type': lambda obj: obj['_class']['_classname'],
+    'isinstance': isinstance_dict,
+}
+print('-' * 35 + 'TASK_5' + '-' * 35)
+# Рекурсивная функция find
+def find(cls, method_name):
+    if cls is None:
+        raise NotImplementedError('method_name')
+    if method_name in cls:
+        return cls[method_name]
+    return find(cls['_parent'], method_name)
+print('-' * 35 + 'TASK_6' + '-' * 35)
+# Кэширование уже вызванных функций
+def square_new(name, side):
+    return make(Shape, name) | {
+        'side': side,
+        '_class': Square,
+        '_cache': {},
+    }
+def circle_new(name, radius):
+    return make(Shape, name) | {
+        'radius': radius,
+        '_class': Circle,
+        '_cache': {},
+    }
+# Новый call с учетом _cache
+def call(thing, method_name, *args, **kwargs):
+    if method_name in thing['_cache']: return thing['_cache'][method_name](thing, *args, **kwargs)
+    method = find(thing['_class'], method_name)
+    thing['_cache'][method_name] = method
+    return method(thing, *args, **kwargs)
