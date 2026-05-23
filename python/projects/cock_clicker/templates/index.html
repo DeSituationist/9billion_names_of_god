@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Пенис кликер</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <div id="stats">
+        <span id="cookie-count">0</span> Ебать у тебя пенисов<br>
+        per second: <span id="cps">0</span>
+    </div>
+    <!-- Clickable circle now contains an image -->
+    <div id="cookie" onclick="clickCookie()">
+        <img src="{{ url_for('static', filename='images/cookie.png') }}" alt="Cookie">
+    </div>
+    <div id="upgrades"></div>
+
+    <script>
+        let cookies = 0;
+        let clickPower = 1;
+        let cookiesPerSecond = 0;
+
+        const upgrades = [
+            {
+                name: 'Быстрый пенис',
+                baseCost: 10,
+                description: 'Плюс один пенис за клик.',
+                owned: 0,
+                effect: () => { clickPower += 1; },
+                costMultiplier: 1.15,
+                icon: 'cursor.png',   // image file in static/images/
+                button: null
+            },
+            {
+                name: 'Авто-пенис',
+                baseCost: 50,
+                description: 'Производит +1 пенис.',
+                owned: 0,
+                effect: () => { cookiesPerSecond += 1; },
+                costMultiplier: 1.15,
+                icon: 'grandma.png',
+                button: null
+            }
+        ];
+
+        function getUpgradeCost(upgrade) {
+            return Math.floor(upgrade.baseCost * Math.pow(upgrade.costMultiplier, upgrade.owned));
+        }
+
+        // Create upgrade buttons ONCE
+        function createUpgradeButtons() {
+            const container = document.getElementById('upgrades');
+            container.innerHTML = '';
+            upgrades.forEach((upgrade, index) => {
+                const btn = document.createElement('button');
+                btn.className = 'upgrade';
+                btn.addEventListener('click', () => buyUpgrade(index));
+                upgrade.button = btn;
+                container.appendChild(btn);
+            });
+        }
+
+        // Only update text and state on existing buttons
+        function updateUpgradeButtons() {
+            upgrades.forEach(upgrade => {
+                const btn = upgrade.button;
+                if (!btn) return;
+                const cost = getUpgradeCost(upgrade);
+                btn.disabled = cookies < cost;
+                // Include icon image before the name
+                btn.innerHTML = `
+                    <div class="upgrade-content">
+                        <img src="/static/images/${upgrade.icon}" alt="${upgrade.name}" class="upgrade-icon">
+                        <div class="upgrade-info">
+                            <div class="upgrade-row">
+                                <span>${upgrade.name} (${upgrade.owned})</span>
+                                <span>${cost} cookies</span>
+                            </div>
+                            <div class="upgrade-desc">${upgrade.description}</div>
+                        </div>
+                    </div>
+                `;
+            });
+        }
+
+        function updateDisplay() {
+            document.getElementById('cookie-count').textContent = Math.floor(cookies);
+            document.getElementById('cps').textContent = cookiesPerSecond.toFixed(1);
+            updateUpgradeButtons();
+        }
+
+        function clickCookie() {
+            cookies += clickPower;
+            updateDisplay();
+        }
+
+        function buyUpgrade(index) {
+            const upgrade = upgrades[index];
+            const cost = getUpgradeCost(upgrade);
+            if (cookies >= cost) {
+                cookies -= cost;
+                upgrade.owned++;
+                upgrade.effect();
+                updateDisplay();
+            }
+        }
+
+        // Initialise
+        createUpgradeButtons();
+        updateDisplay();
+
+        // CPS tick every second
+        setInterval(() => {
+            cookies += cookiesPerSecond;
+            updateDisplay();
+        }, 1000);
+    </script>
+</body>
+</html>

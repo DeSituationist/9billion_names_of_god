@@ -1,0 +1,101 @@
+body {
+    font-family: Arial, sans-serif;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: #f0e6d2;
+    margin: 0;
+    padding: 20px;
+}
+
+#cookie {
+    width: 200px;
+    height: 200px;
+    background-color: #d27d2d;
+    border: 3px solid black;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    user-select: none;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+    transition: transform 0.1s;
+    overflow: hidden;
+}
+
+#cookie:active {
+    transform: scale(0.95);
+}
+
+#cookie img {
+    width: 80%;
+    height: 80%;
+    object-fit: contain;
+    pointer-events: none;
+}
+
+#stats {
+    font-size: 24px;
+    margin: 20px;
+}
+
+/* Wider container for bigger buttons */
+#upgrades {
+    width: 450px;            /* slightly wider */
+    margin-top: 20px;
+}
+
+/* Bigger upgrade buttons */
+.upgrade {
+    background: #c49a6c;
+    border: none;
+    padding: 15px 15px;      /* more padding → taller */
+    margin: 8px 0;           /* a bit more vertical spacing */
+    width: 100%;
+    text-align: left;
+    border-radius: 8px;
+    font-size: 20px;         /* larger text */
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+}
+
+.upgrade:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+.upgrade:not(:disabled):hover {
+    background: #b38352;
+}
+
+/* Icon + text container */
+.upgrade-content {
+    display: flex;
+    align-items: center;
+    gap: 16px;               /* bigger gap between icon and text */
+}
+
+/* Larger icons */
+.upgrade-icon {
+    width: 48px;             /* was 32px */
+    height: 48px;
+    object-fit: contain;
+    flex-shrink: 0;
+}
+
+.upgrade-info {
+    flex: 1;
+}
+
+.upgrade-row {
+    display: flex;
+    justify-content: space-between;
+    font-weight: bold;
+}
+
+.upgrade-desc {
+    font-size: 16px;         /* slightly larger description */
+    color: #333;
+}
