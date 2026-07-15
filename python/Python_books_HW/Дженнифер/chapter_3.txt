@@ -1,0 +1,8 @@
+1. -Users screen size
+   -Users physical abilities
+2. Progressive enhancment - (c) All levels of browser capabilities
+   Resoponsive design - (d) A variety of screen sizes
+   WAI-ARIA - (a) Assitive reading and input devices
+   Site performance optimization - (b) Slow connection speed
+3. Poor vision, no vision.
+4. To see speed with which each elemts loads up
