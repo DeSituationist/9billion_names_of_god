@@ -1,0 +1,24 @@
+1. Tag is <tag> or </tag>;
+   Element is <tag>Text</tag>;
+2.
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Some Title</title>
+    </head>
+    <body>
+    </body>
+</html>
+3.
+a. Yes
+b. No, cause of .doc 
+c. No, cause of spaces
+d. Yes
+e. No, cause of slash
+f. No, cause of %
+4.
+a. Missing src
+b. Missing /
+c. Has attribute in closing tag
+d. Uses \ instead of /
+5. <!-- Product list begins here --> - comment
