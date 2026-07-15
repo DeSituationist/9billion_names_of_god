@@ -1,0 +1,10 @@
+1. HTML - (c) the markup language used to describe web content
+2. W3C - (j) the organization that monitors web technologies
+3. CERN - (h) the particle physics lab where the web was born
+4. CSS - (g) the language used to specify how web content looks
+5. HTTPS - (f) a protocol to transfer files on internet securely 
+6. IP - (i) internet protocol
+7. URL - (b) the location of web document or resource
+8. NCSA - (a) home of mosaic, the first graphical browser
+9. DNS - (d) matches domain names with numeric IP adresses
+10. FTP - (e) a protocol for file transfer
