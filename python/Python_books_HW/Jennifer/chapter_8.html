@@ -1,0 +1,196 @@
+<!--Tables-->
+<head>
+    <style>
+        td, th { border: 1px solid #CCC; }
+        table { border: 1px solid black; }
+    </style>
+</head>
+<table>
+    <tr>
+        <th>Menu items</th>
+        <th>Calories</th>
+        <th>Fat (g)</th>
+    </tr>
+    <tr>
+        <td>Chicken noodle soup</td>
+        <td>120</td>
+        <td>2</td>
+    </tr>
+    <tr>
+        <td>Caesar salad</td>
+        <td>400</td>
+        <td>26</td>
+    </tr>
+</table>
+
+<hr>
+<table>
+    <tr>
+        <th>Burgers</th>
+        <td>Organic Grass-fed Beef</td>
+        <td>Black Bean Veggie</td>
+    </tr>
+    <tr>
+        <th>Fries</th>
+        <td>Hand-cut Idaho potato</td>
+        <td>Seasoned sweet potato</td>
+    </tr>
+</table>
+
+<hr>
+<table>
+    <tr>
+        <th>Album</th>
+        <th>Year</th>
+    </tr>
+    <tr>
+        <td>Rubber Soul</td>
+        <td>1965</td>
+    </tr>
+    <tr>
+        <td>Revolver</td>
+        <td>1966</td>
+    </tr>
+    <tr>
+        <td>Sgt. Pepper's</td>
+        <td>1967</td>
+    </tr>
+    <tr>
+        <td>The white album</td>
+        <td>1968</td>
+    </tr>
+    <tr>
+        <td>Abbey Road</td>
+        <td>1969</td>
+    </tr>
+</table>
+
+<!--Spanning-->
+<hr>
+<table>
+    <tr>
+        <th colspan="2">Fat</th> <!--Stretch a cell to the right-->
+    </tr>
+    <tr>
+        <td>Saturated Fat (g)</td>
+        <td>Unsaturated Fat (g)</td>
+    </tr>
+</table>
+
+<hr>
+<table>
+    <tr>
+        <th>7:00pm</th>
+        <th>7:30pm</th>
+        <th>8:00pm</th>
+    </tr>
+    <tr>
+        <td colspan="3">The Sunday Night Movie</td>
+    </tr>
+    <tr>
+        <td>Perry Mason</td>
+        <td>Candid Camera</td>
+        <td>What's my line?</td>
+    </tr>
+    <tr>
+        <td>Bonanza</td>
+        <td colspan="2">The Wackiest Ship in the Army</td>
+    </tr>
+</table>
+
+<!--Row span-->
+<hr>
+<table>
+    <tr>
+        <th rowspan="3">Serving size</th>
+        <td>Small</td>
+    </tr>
+    <tr>
+        <td>Medium</td>
+    </tr>
+    <tr>
+        <td>Large</td>
+    </tr>
+</table>
+
+<hr>
+<table>
+    <caption>Fruits</caption> <!--Adds caption to the table-->
+    <tr>
+        <th scope="row">Three</th>
+        <th scope="row">One</th>
+        <th scope="row">Two</th>
+    </tr>
+    <tr>
+        <td>apples</td>
+        <td rowspan="3">oranges</td>
+        <td>pears</td>
+    </tr>
+    <tr>
+        <td>bananas</td>
+        <td rowspan="2">pineapple</td>
+    </tr>
+    <tr>
+        <td>lychees</td>
+    </tr>
+</table>
+
+<!--Row group elements-->
+<table>
+    <thead>
+        <!--Headers-->
+        <tr></tr>
+        <tr></tr>
+    </thead>
+    <tbody>
+        <!--DATA-->
+        <tr></tr>
+        <tr></tr>
+    </tbody>
+    <tfoot>
+        <!--Footnote-->
+        <tr></tr>
+        <tr></tr>
+    </tfoot>
+</table>
+
+<!--Column group elements-->
+<colgroup>
+    <col class="start">
+    <col class="end">
+</colgroup>
+<colgroup>
+    <col class="start">
+    <col class="end">
+</colgroup>
+
+<hr>
+<table>
+    <tr>
+        <td rowspan="2">X</td>
+        <th colspan="2" scope="row">A common header for two subheads</th>
+        <th rowspan="2" scope="row">Header 3</th>
+    </tr>
+    <tr>
+        <th scope="row">Header 1</th>
+        <th scope="row">Header 2</th>
+    </tr>
+    <tr>
+        <th scope="col">Thing A</th>
+        <td>data a1</td>
+        <td>data a2</td>
+        <td>data a3</td>
+    </tr>
+    <tr>
+        <th scope="col">Thing B</th>
+        <td>data b1</td>
+        <td>data b2</td>
+        <td>data b3</td>
+    </tr>
+    <tr>
+        <th scope="col">Thing C</th>
+        <td>data c1</td>
+        <td>data c2</td>
+        <td>data c3</td>
+    </tr>
+</table>
