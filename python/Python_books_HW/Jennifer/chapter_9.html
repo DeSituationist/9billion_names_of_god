@@ -1,0 +1,189 @@
+<!--Forms-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mailing List Signup</title>
+</head>
+<body>
+    <h1>Mailing List Signup</h1>
+    <form action="/mailinglist.php" method="post">
+        <fieldset>
+            <legend>Join our email list</legend>
+            <p>Get new about the band such as tour dates and special
+                MP3 releases sent to your own in-box.
+            </p>
+            <ol>
+                <li><label for="firstlast">Name:</label>
+                <input type="text" name="fullname" id="fistlast"> 
+                <!--Name attr creates var name='user_input'-->
+                </li>
+                <li><label for="email">Email:</label>
+                <input type="text" name="email" id="email">
+                </li>
+            </ol>
+            <input type="submit" value="Submit">
+        </fieldset>
+    </form>
+
+    <hr>
+    <!--Text entry controls-->
+    <p>Enter your fav color: <input type="text" name="favcolor" value="Red" maxlength="50"></p>
+
+    <!--Text area-->
+    <hr>
+    <textarea name="contest_entry" rows="5" cols="50">The band is totally awesome!</textarea>
+
+    <!--Specialized entry fields-->
+    <hr>
+    <input type="password" maxlength="12" name="password" id="form-pswd">
+    <input type="search">
+    <input type="email">
+    <input type="tel">
+    <input type="url">
+    <input type="image">
+    <input type="button">
+    <button>Lol</button>
+
+    <hr>
+    <!--Datalist suggests options-->
+    <p>Education completed: <input type="text" list="edulevel" name="education"></p>
+    <datalist id="edulevel">
+        <option value="High School">
+        <option value="Bachelors Degree">
+        <option value="Masters Degree">
+        <option value="Phd">
+    </datalist>
+
+    <hr>
+    <!--Submit and Reset-->
+    <p><input type="submit"> <input type="reset" value="Start over"></p>
+
+    <hr>
+    <!--Radio and checkbox Groups-->
+    <p>How old are u?</p>
+    <ol>
+        <li><input type="radio" name="age" value="under24" checked="checked">under 24</li>
+        <li><input type="radio" name="age" value="25-34">25 to 34</li>
+        <li><input type="radio" name="age" value="35-44">35 to 44</li>
+        <li><input type="radio" name="age" value="over45">45+</li>
+    </ol>
+
+    <hr>
+    <p>What type of music do u listen to?</p>
+    <ul>
+        <li><input type="checkbox" name="genre" value="punk">Punk rock</li>
+        <li><input type="checkbox" name="genre" value="indie">Indie rock</li>
+        <li><input type="checkbox" name="genre" value="hiphop">Hip Hop</li>
+        <li><input type="checkbox" name="genre" value="rockabilly">Rockabilly</li>
+    </ul>  
+
+    <hr>
+    <!--Menus-->
+    <!--Drop down menu-->
+    <p>What's ur favorite 80s band?</p>
+    <select name="EightiesFave">
+        <option>The Cure</option>
+        <option>Cocteau Twins</option>
+        <option value="EBTG">Everything But The Girl</option>
+        <option>Depeche Mode</option>
+        <option>New Order</option>
+    </select>
+
+    <hr>
+    <!--Scrolling Menu-->
+    <p>What's ur favorite 80s band?</p>
+    <select name="EightiesFave" size="3" multiple>
+        <option>The Cure</option>
+        <option>Cocteau Twins</option>
+        <option value="EBTG">Everything But The Girl</option>
+        <option>Depeche Mode</option>
+        <option>New Order</option>
+    </select>
+    
+    <hr>
+    <select name="icecream" size="7" multiple>
+        <optgroup label="traditional">
+            <option>vanilla</option>
+            <option>chocolate</option>
+        </optgroup>
+        <optgroup label="fancy">
+            <option>Super praline</option>
+            <option>Nut surpise</option>
+            <option>Candy corn</option>
+        </optgroup>
+    </select>
+
+    <hr>
+    <!--File selection Control-->
+    <form action="/client.php" method="post" enctype="multipart/form-data">
+        <label>Send a photo to be used as your online icon<em>(optional)</em>:
+        <input type="file" name="photo"></label>
+    </form>
+
+    <hr>
+    <!--Numerical-->
+    <label>Number of guests: <input type="number" name="guests" min="1" max="6"></label>
+    <label>Satisfaction (0 to 10): <input type="range" name="satisfaction" min="0" max="10" step="1"></label>
+
+    <hr>
+    <!--Hidden-->
+    <input type="hidden" name="success-link" value="http://www.thankyou.com/index.html">
+
+    <hr>
+    <!--Fieldset-->
+    <!-- indicates a logical group of form controls. A fieldset may
+    also include a legend element that provides a caption for the enclosed fields-->
+    <fieldset>
+        <legend>Mailing list sign-up</legend>
+        <ul>
+            <li><label>Add me to ur mailing list: <input type="radio" value="yes" name="list" checked></label></li>
+            <li><label>No thanks: <input type="radio" value="no" name="list"></label></li></label></li>
+        </ul>
+    </fieldset>
+
+    <hr>
+    <!--Exercise-->
+    <h2>Black Goose Bistro | Pizza-on-demand</h2>
+    <p>Our 12" wood-fired pizzas are available for delivery. Build your custom pizza and we'll deliver it within an hour.</p>
+    <form action="http://www.blackgoosebistro.com/" method="post">
+        <fieldset>
+            <legend>Your information.</legend>
+            <ul>
+                <li><label for="user_name">Name:</label><input type="text" id="user_name" name="name"></li>
+                <li><label for="user_address">Address:</label><input type="text" id="user_address" name="address"></li>
+                <li><label for="user_tel">Telephone:</label><input type="tel" id="user_tel" name="ph_number"></li>
+                <li><label for="user_mail">Email:</label><input type="email" id="user_mail" name="mail"></li>
+                <li>Delivery instructions:<br><textarea rows="4" cols="60" placeholder="No more than 400 characters" name="instructions" id="del_instructions" maxlength="400"></textarea></li>
+            </ul>
+            <h3>Design Your Dream Pizza:</h3>
+            <p>pizza specs</p>
+            <p>Crust(Choose one):</p>
+            <ul>
+                <li><label for="crust_classic">Classic white</label><input value="classic_white" id="crust_classic" type="radio" name="crust"></li>
+                <li><label for="crust_multi">Multigrain</label><input value="multigrain" id="crust_multi" type="radio" name="crust"></li>
+                <li><label for="crust_cheese">Cheese-stuffed crust</label><input value="stuffed_cheese" id="crust_cheese" type="radio" name="crust"></li>
+                <li><label for="crust_free">Gluten-free</label><input value="gluten_free" id="crust_free" type="radio" name="crust"></li>
+            </ul>
+            <p>Choose toppings( As many as u want):</p>
+            <ul>
+                <li><label for="top_red">Red sauce</label><input checked="checked" type="checkbox" name="topping[]" id="top_red" value="red_sauce"></li>
+                <li><label for="top_white">White sauce</label><input type="checkbox" name="topping[]" id="top_white" value="white_sauce"></li>
+                <li><label for="top_mozzarella">Mozzarella cheese</label><input type="checkbox" name="topping[]" id="top_mozzarella" value="mozzarella_cheese"></li>
+                <li><label for="top_pepperoni">Pepperoni</label><input type="checkbox" name="topping[]" id="top_pepperoni" value="pepperoni"></li>
+            </ul>
+            <p>Number</p>
+            <label for="num_pizzas">How many pizzas: <input type="number" max="5" min="1" name="amount" id="num_pizzas" list="numbers"></label>
+            <datalist id="numbers">
+                <option value="1">
+                <option value="2">
+                <option value="3">
+                <option value="4">
+                <option value="5">
+            </datalist>
+            <p><input type="submit" value="Bring me a pizza!"></p>
+        </fieldset>
+    </form>
+</body>
+</html>
