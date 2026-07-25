@@ -1,0 +1,84 @@
+<!--Embedded content-->
+
+<!--Inline frame-->
+<h1>Inline Frame</h1>
+<iframe src="glossary.html" width="400" height="250">
+    <a href="glossary.html">Glossary</a>
+</iframe>
+<hr>
+<iframe width="560" height="315" 
+        src="https://www.youtube.com/embed/ARXUjakdjVo" 
+        referrerpolicy="strict-origin-when-cross-origin" 
+        allowfullscreen>
+</iframe>
+
+<!--Object-->
+<object data="veryspecial.pdf" type="application/pdf" width="600" height="800">
+    <p>Read the <a href="special.html">Very Special Document</a>.</p>
+</object>
+
+<!--Video and audio-->
+<hr>
+<video src="https://www.youtube.com/embed/ARXUjakdjVo" 
+    width="1280" height="720"
+    poster ="highlight_still.jpg" controls muted autoplay>
+    Get the <a href="https://www.youtube.com/embed/ARXUjakdjVo">MP4 video.</a>
+</video>
+<hr>
+<!--Many sources-->
+<video id="video" controls poster="img/poster.jpg">
+    <source src="clip.webm" type="video/webm">
+    <source src="clip.mp4" type="video/mp4">
+    <a href="clip.mp4">Download the MP4</a>
+</video>
+
+<hr>
+<!--Audio-->
+<p>Play "Percussion Gun" by White Rabbits</p>
+<audio id="whiterabbits" controls preload="auto">
+    <source src="percussiongun.mp3" type="audio/mp3">
+    <source src="percussiongun.mp4" type="audio/mp4">
+    <source src="percussiongun.webm" type="aydui/webm">
+    <p><a href="percussiongun.mp3">Download MP3</a></p>
+</audio>
+
+<!--Track (subs)-->
+<hr>
+<video width="640" height="320" controls="controls">
+    <source src="japanese_movie.mp4" type="video/mp4">
+    <source src="japanese_movie.webm" type="video/webm">
+    <track src="english_subtitles.vtt"
+        kind="subtitles"
+        srclang="en"
+        label="English subtitles"
+        default>
+    <track src="french.vtt"
+        kind="subtitles"
+        srclang="fr"
+        label="Sous-titres en francais">
+</video>
+
+<hr>
+<!--Canvas-->
+<canvas width="600" height="400" id="my_first_canvas">
+    <img src="canves_screenshot.png" alt="game interface">
+</canvas>
+<script>
+    var theCanvas = document.getElementById('my_first_canvas');
+    var my_canvas = theCanvas.getContext('2d');
+    my_canvas.strokeRect(0, 0, 200, 225) // to start, draw a border
+    //draw face
+    my_canvas.beginPath();
+    my_canvas.arc(100, 100, 75, (Math.PI / 180) * 0, (Math.PI / 180) *
+    360, false); // circle dimensions
+    my_canvas.strokeStyle = "black"; // circle outline is black
+    my_canvas.lineWidth = 3; // outline is three pixels wide
+    my_canvas.fillStyle = "yellow"; // fill circle with yellow
+    my_canvas.stroke(); // draw circle
+    my_canvas.fill(); // fill in circle
+    my_canvas.closePath();
+    // Smiley Speaks!
+    my_canvas.fillStyle = "black"; // switch to black for text fill
+    my_canvas.font = '20px sans-serif'; // use 20 pixel sans serif font
+    my_canvas.fillText("Hello Canvas!", 45, 200); // write text
+</script>
