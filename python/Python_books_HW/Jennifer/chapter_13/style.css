@@ -1,0 +1,17 @@
+body{
+    margin-left: 15%;
+    margin-right: 15%;
+    width: 70%;
+    background-color: #cdd7ae;
+    text-align: center;
+}
+body > header{
+    background-color: rgb(255 255 255 / .5);
+    opacity: .5;
+}
+h1{
+    color: rgb(153 51 153);
+}
+h2, h3{
+    color: hsl(299 65% 30%)
+}
