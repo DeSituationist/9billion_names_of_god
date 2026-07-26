@@ -1,0 +1,46 @@
+p{
+    font-family: "Duru sans", Verdana, sans-serif;
+}
+@font-face {
+    font-family: "MyWebFont";
+    src: url(fonts/webfont.woff2) format("woff2");
+    font-weight: normal;
+    font-style: normal;
+}
+h3{
+    font-family: MyWebFont;
+}
+/*
+
+Descendant selector
+
+li em {
+    property: value;
+}
+
+  ID selector
+
+li#sleestak{
+    property: value;
+}
+#sleestak{
+    property: value;
+}
+#sleestak a{
+    property: val;
+}
+
+  Class selector
+
+p.special{
+    color: orange;
+}
+.special{
+    color: grey;
+}
+
+  Universal
+#sleestak *{
+    color: maroon;
+}
+*/
