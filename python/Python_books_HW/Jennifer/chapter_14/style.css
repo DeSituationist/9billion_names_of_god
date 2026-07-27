@@ -1,0 +1,93 @@
+/*
+Attribute selectors
+img[title] {border: 3px solid;}
+
+[title] {border: 3px solid;}
+
+img[title][loading] {border: 3px solid;}
+
+Attribute value
+img[title="first grade"] {border: 3px solid;}
+
+*/
+[name="birthmonth"]{
+    background-color: peachpuff;
+}
+[name$="-name"]{
+    background-color: salmon;
+}
+[name="email"]{
+    background-color: lightsalmon;
+}
+.menu-btn {
+    display: inline-block;
+    background-color: #f6f9e6; 
+    color: #7d307d;             
+    border: 2px solid #e7ebd9;  
+    border-radius: 12px;       
+    padding: 10px 30px;        
+    margin: 8px auto;           
+    text-decoration: none;     
+    font-weight: bold;
+    font-size: 18px;
+    white-space: nowrap;        
+}
+.menu-btn:visited{
+    color: #3f153f; 
+}
+.menu-btn:hover, .menu-btn:focus{
+    color: #a873a8; 
+    background-color: #fff;
+}
+.menu-btn:active{
+    color: fuchsia;
+    background-color: #fff;
+}
+li{
+    list-style-type: none;
+}
+li:first-child{
+    background-color: pink;
+}
+.orange:first-child{
+    background-color: pink;
+}
+li:nth-child(3){
+    background-color: red;
+}
+li:nth-child(even){
+    background-color: green;
+}
+/*Child-indexed selectors*/
+dd:nth-of-type(even){
+    background-color: pink;
+}
+/*Pseudo-elemnt selectors*/
+.links a:first-child {
+    letter-spacing: 9px;
+}
+.links a::first-letter{
+    font-size: 200%;
+    color: orange;
+}
+/*Before and after*/
+p.warning::before{
+    content: "!";
+    color: red;
+    font-size: 400%;
+}
+p.warning::after{
+    content: " Thank u.";
+    color: red;
+}
+/*Modular style sheets*/
+@import url(print_styles.css) print; /*Styles only used then printing the doc*/
+@import url(small_device.css) screen and (max-width: 420px); /*styles only for small devices*/
+/* basic typography */
+@import url("type.css");
+/* form inputs */
+@import url("forms.css");
+/* navigation */
+@import url("list-nav.css");
+/* site-specific styles */
+body { background: orange; }

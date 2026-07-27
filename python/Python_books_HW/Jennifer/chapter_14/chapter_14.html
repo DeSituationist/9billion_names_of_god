@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="style.css">
+    <!--Media queries
+    <link rel="stylesheet" href="/path/stylesheet.css" media="print"> used for html
+    -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h2>JOIN OUR VIP LIST</h2>
+    <p>
+    <em>Sign up for our mailing list and be the first to know about upcoming specials and events.<br>
+    You'll also get discount codes to celebrate your birthday!</em>
+    </p>
+
+    <form>
+    <table cellpadding="5" cellspacing="5">
+        <tr>
+        <td><label for="firstname">FIRST NAME:</label></td>
+        <td><input type="text" id="firstname" name="first-name" size="40"></td>
+        </tr>
+        <tr>
+        <td><label for="lastname">LAST NAME:</label></td>
+        <td><input type="text" id="lastname" name="last-name" size="40"></td>
+        </tr>
+        <tr>
+        <td><label for="email">EMAIL:</label></td>
+        <td><input type="text" id="email" name="email" size="40"></td>
+        </tr>
+        <tr>
+            <td><label for="birthmonth">BIRTH MONTH:</label></td>
+            <td>
+            <input type="text" id="birthmonth" name="birthmonth" list="month-list" size="40">
+            <datalist id="month-list">
+                <option value="January">
+                <option value="February">
+                <option value="March">
+                <option value="April">
+                <option value="May">
+                <option value="June">
+                <option value="July">
+                <option value="August">
+                <option value="September">
+                <option value="October">
+                <option value="November">
+                <option value="December">
+            </datalist>
+            </td>
+        </tr>
+        <tr>
+        <td>
+            <button type="submit">Sign me up!</button>
+        </td>
+        </tr>
+    </table>
+    </form>
+    <div class="links">
+        <a href="#vip" class="menu-btn">Join our VIP list</a><br>
+        <a href="#month" class="menu-btn">This Month Only</a><br>
+        <a href="#specials" class="menu-btn">Specials</a><br>
+        <a href="#entertainment" class="menu-btn">Entertainment</a>
+    </div>
+    <ol>
+        <li class="red yellow">Apples</li>
+        <li class="red green">Grapes</li>
+        <li class="yellow">Bananas</li>
+        <li class="yellow">Mangoes</li>
+        <li class="blue">Blueberries</li>
+        <li class="red">Lychees</li>
+        <li class="orange">Oranges</li>
+        <li class="yellow">Lemons</li>
+        <li class="red">Cherries</li>
+        <li class="orange">Nectarines</li>
+    </ol>
+    <dl>
+        <dt>Red fruit</dt>
+        <dd>Apples</dd>
+        <dd>Grapes</dd>
+        <dd>Lychees</dd>
+        <dd>Cherries</dd>
+        <dt>Yellow fruit</dt>
+        <dd>Apples</dd>
+        <dd>Bananas</dd>
+        <dd>Mangoes</dd>
+        <dd>Lemons</dd>
+        <dt>Orange fruit</dt>
+        <dd>Oranges</dd>
+        <dd>Nectarines</dd>
+        <dd>Mangoes</dd>
+        <dt>Blue fruit</dt>
+        <dd>Blueberries</dd>
+    </dl>
+    <p class="warning">We are required to warn you that undercooked food is
+a health risk.</p>
+</body>
+</html>
+
+
