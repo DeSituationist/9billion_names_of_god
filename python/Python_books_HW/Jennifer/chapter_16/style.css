@@ -1,0 +1,56 @@
+html {box-sizing: border-box;}
+*, *:before, *:after {box-sizing: inherit;}
+.muffins img {
+    width: 150px;
+    height: 150px;
+    object-fit: cover;
+    float: left;
+    margin-right: 16px;
+    margin-left: 50px;
+}
+article{
+    position: relative;
+    display: flow-root;
+    margin: 2.5%;
+    padding: 10px 5px;
+    font-size: 1.2rem;
+    border: double 6px lightsalmon;
+    border-radius: 25px;
+}
+article p{
+    display: flow-root;
+    color: grey;
+    line-height: 1.3em;
+    word-spacing: 5px;
+}
+article a{
+    display: inline-block;
+    clear: left;
+    text-decoration: none;
+    border-bottom: 1px dotted;
+    color: orange;
+    text-transform: uppercase;
+    margin-bottom: 10px;
+    margin-left: 50px;
+}
+h2{
+    color: maroon;
+    padding-left: 1em;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    border-style: inset;
+    border-left: 3px solid maroon;
+    border-top: 1px solid maroon;
+    border-right: none;
+    border-bottom: none;
+}
+#award{
+    position: absolute;
+    top: 60px;
+    left: 80px;
+}
+#award img{
+    width: 100px;
+    height: 100px;
+    object-fit: cover;
+}
