@@ -1,0 +1,96 @@
+/*Best practice to use 
+html {box-sizing: border-box;}
+*, *:before, *:after {box-sizing: inherit;}
+because paddings don't add size to the element only margins
+*/
+html {box-sizing: border-box;}
+*, *:before, *:after {box-sizing: inherit;}
+blockquote{
+    background-color: lightgreen;
+    border: 2px solid;
+    padding-top: 30px;
+    padding-right: 60px;
+    padding-bottom: 30px;
+    padding-left: 60px;
+    /*
+    Padding in one line: 
+    padding: top right bottom left;
+    padding: 10px;
+    Applied to all sides.
+    padding: 10px 6px;
+    First is top and bottom; second is left
+    and right.
+    padding: 10px 6px 4px;
+    First is top; second is left and right;
+    third is bottom.
+    */
+}
+.muffins img {
+  width: 150px;
+  height: 150px;
+  object-fit: cover;
+}
+article{
+    margin: 2.5%;
+    padding: 10px 5px;
+    font-size: 1.2rem;
+    border: double 6px lightsalmon;
+    border-radius: 25px;
+}
+article p{
+    color: grey;
+    line-height: 1.3em;
+    word-spacing: 5px;
+}
+article a{
+    display: inline-block;
+    text-decoration: none;
+    border-bottom: 1px dotted;
+    color: orange;
+    text-transform: uppercase;
+    margin-bottom: 10px;
+}
+h2{
+    color: maroon;
+    padding-left: 1em;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    border-style: inset;
+    border-left: 3px solid maroon;
+    border-top: 1px solid maroon;
+    border-right: none;
+    border-bottom: none;
+}
+body > p{
+    width: 200px;
+    height: 200px;
+    background-color: #C2F670;
+}
+.first{
+    border: double 3px black;
+}
+.second{
+    padding: 2em;
+    font-size: 0.8rem;
+}
+.third{
+    padding: 2em;
+    font-size: 0.8rem;
+    border: solid 4px red;
+}
+.fourth{
+    margin: 2em;
+    border: solid 4px red;
+}
+.fifth{
+    margin: 1em 6em;
+    padding: 1em 1em 6em 6em;
+    border: dashed 4px black;
+    font-size: 0.7rem;
+}
+.sixth{
+    margin-inline: auto;
+    border: solid 2px black;
+    padding: 1em 50px;
+    font-size: 0.7rem;
+}
