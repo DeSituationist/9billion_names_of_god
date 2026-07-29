@@ -1,0 +1,77 @@
+html {box-sizing: border-box;}
+*, *:before, *:after {box-sizing: inherit; margin: 0}
+.brown{
+    background-color: brown;
+}
+.brown ul{
+    padding: 10px;
+    list-style: none;
+    display: flex;
+    justify-content: center;
+}
+.brown ul li a{
+    display: block;
+    border: 1px solid burlywood;
+    border-radius: 6px;
+    padding: .5em 1em;
+    margin: 0 10px;
+    text-decoration: none;
+    color: burlywood;
+}
+h1{
+    color: #4d4d4d;
+    font-family: Helvetica, Arial, sans-serif;
+}
+body{
+    display: grid;
+    grid-template-rows: 3em 20px [main-start] 150px 300px 5em [main-end];
+    grid-template-columns: [main-start] 1fr [main-end] repeat(3, 150px);
+    column-gap: 20px;
+}
+main{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    grid-row: main-start / main-end;
+    grid-column: main-start / main-end;
+}
+main p{
+    font-size: 1.2em;
+    line-height: 1.5em;
+    color: #727272;
+    font-family: sans-serif;
+}
+footer p{
+    text-align: center;
+    color: white;
+    
+}
+img{
+    width: 150px;
+    height: 150px;
+    object-fit: cover;
+}
+#food_1{
+    grid-row: 3 / 4;
+    grid-column: span 1 / 4;
+}
+#food_2{
+    grid-row: 3 / 4;
+    grid-column: span 1 / 5;
+}
+#food_3{
+    grid-row: 3 / 4;
+    grid-column: span 1 / 3;
+}
+footer{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #a0522d;
+    grid-row: span 1 / 6;
+    grid-column: span 3 / -1;
+}
+header{
+    grid-row: 1 / 2;
+    grid-column: span 4 / 5;
+}
