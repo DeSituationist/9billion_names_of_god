@@ -1,0 +1,32 @@
+/*
+Media query
+
+@media type and (feature: value){
+    styles for browsers that meet these criteria
+}
+*/
+
+@media screen and (orientation: landscape){
+    body{
+        background: skyblue;
+    }
+}
+
+@media screen and (orientation: portrait){
+    body{
+        background: coral;
+    }
+}
+/*
+min-width for mobile first: then same or wider
+
+h2 {
+    font-family: serif;
+}
+
+@media screen and (min-width: 30rem){
+    h2{
+        font-family: 'Lobster', cursive;
+    }
+}
+*/
