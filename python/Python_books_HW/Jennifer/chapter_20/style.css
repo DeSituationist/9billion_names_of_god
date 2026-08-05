@@ -1,0 +1,47 @@
+.smooth{
+    display: inline-block;
+    color: white;
+    text-decoration: none;
+    background-color: blue;
+    /*transition-property: background-color;
+    transition-duration: .3s;
+    transition-timing-function: ease-in-out;*/
+    transition-property: background-color, color, letter-spacing, rotate;
+    transition-duration: .3s, 2s, .3s, .3s;
+    transition-timing-function: ease-out, ease-in, ease-out, ease-in;
+}
+.smooth:hover, .smooth:focus{
+    rotate: -10deg;
+    background-color: red;
+    letter-spacing: 3px;
+    color: black;
+    transform: scale(2, .5);
+}
+.linkbox{
+    display: flex;
+    justify-content: flex-start;
+    margin-top: 20px;
+}
+.linkbox a{
+    background-color: gray;
+    text-decoration: none;
+    color: white;
+    border: solid black 1px;
+    border-radius: 10px;
+    display: flex;
+    width: 100px;
+    height: 50px;
+    justify-content: center;
+    align-items: center;
+    margin-right: 10px;
+    position: relative;
+    transition: background-color .2s, border-color .2s, top .2s .5s;
+}
+
+.linkbox a:hover{
+    background-color: #c6de89;
+    border-color: #a3c058;
+}
+.linkbox a:active{
+    top: 3px;
+}
