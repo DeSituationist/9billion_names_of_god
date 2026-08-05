@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="style.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Custom Sneaker Order Form</title>
+</head>
+<body>
+    <form action="/submit-order" method="POST">
+        <h2>Custom Sneaker Order Form</h2>
+        
+        <ul>
+            <li class="input-row">
+                <label for="name">Name: </label>
+                <input id="name" type="text" name="name" required>
+            </li>
+            <li class="input-row">
+                <label for="mail">Email: </label>
+                <input id="mail" name="email" type="email">
+            </li>
+            <li class="input-row">
+                <label for="phone">Telephone: </label>
+                <input id="phone" name="telephone" type="tel">
+            </li>
+            <li class="input-row">
+                <label for="about">About yourself: </label>
+                <textarea name="about" id="about" placeholder="No more than 600 chars" maxlength="600"></textarea>
+            </li>
+            <li class="input-row size">
+                <label for="size">Size: </label>
+                <input type="number" id="size" name="size" max="10" min="1" step="1" value="5">
+                <em>Standard men's sizes</em>
+            </li>
+            
+            <li>
+                <label>Sneaker Color: </label>
+                <fieldset id="color_group">
+                    <legend>Select a color</legend>
+                    <input type="radio" id="opt_blue" name="sneaker_color" value="blue">
+                    <label for="opt_blue" class="inline">Blue</label>
+                    <input type="radio" id="opt_red" name="sneaker_color" value="red">
+                    <label for="opt_red" class="inline">Red</label>
+                    <input type="radio" id="opt_white" name="sneaker_color" value="white">
+                    <label for="opt_white" class="inline">White</label>
+                </fieldset>
+            </li>
+
+            <li>
+                <label>Add-on Features: </label>
+                <fieldset id="feature_group">
+                    <legend>Select a feature</legend>
+                    <input type="checkbox" id="feat_laces" name="sneaker_feature[]" value="laces">
+                    <label for="feat_laces" class="inline">Sparkly laces</label><br>
+                    
+                    <input type="checkbox" id="feat_logo" name="sneaker_feature[]" value="logo">
+                    <label for="feat_logo" class="inline">Metallic logo</label><br>
+                    
+                    <input type="checkbox" id="feat_heels" name="sneaker_feature[]" value="heels">
+                    <label for="feat_heels" class="inline">Light-up heels</label><br>
+                </fieldset>
+            </li>
+            
+            <li>
+                <input type="submit" value="Place Order">
+            </li>
+        </ul>
+    </form>
+</body>
+</html>
