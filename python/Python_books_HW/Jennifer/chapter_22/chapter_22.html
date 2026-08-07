@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="style.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <p id="intro"></p>
+    <h1>Welcome to Jen's Kitchen</h1>
+    <p id="main">
+        Welcome to Jen’s Kitchen, your ultimate destination for everything food! Whether you’re a seasoned home chef, an adventurous foodie, or someone just discovering the joys of cooking, you’ve come to the right place. Dive into our treasure trove of expertly curated recipes, from quick weeknight dinners to indulgent gourmet creations, all tested and perfected to bring the best flavors to your table. Planning a night out? Explore our restaurant guides for insider tips and honest reviews, helping you uncover the hidden gems and must-visit dining spots in your city and beyond. Plus, with our thoughtful tips, cooking hacks, and the latest trends in the culinary world, Jen’s Kitchen is here to inspire and simplify your food journey. Join our community of food lovers and let’s celebrate the art of delicious living—one bite, one recipe, and one unforgettable meal at a time.
+    </p>
+
+</body>
+    <script>
+        // Adds text to p element
+        document.querySelector('p#intro').innerText = 'Hi from JS!';
+        /*
+        document.body.style = "background: yellow";
+        if (window.innerWidth < 600) {...}
+        let total = 0;
+        total = total + 5;
+        total += 5;
+        ++total;
+        if (window.innerWidth < 600){
+            document.body.style = "background: red";
+        }
+        */
+       let color = "yellow";
+       if (window.innerWidth < 600){
+            color = "red"; 
+       }
+       /*
+       Adding scripts: 
+       <script src="my.js"><script>
+       */
+      console.log('Hello console!')
+      let days = 22 * 365.25;
+      let hours = days * 24;
+      let minutes = hours * 60;
+      let seconds = minutes * 60;
+      console.log('Age in seconds: ', seconds);
+      let $ps = document.querySelectorAll('p');
+      console.log('Amount of paragraphs: ', $ps.length);
+    </script>
+    <script src="word-counter.js"></script>
+</html>
