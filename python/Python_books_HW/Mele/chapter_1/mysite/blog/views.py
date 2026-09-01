@@ -3,11 +3,25 @@ from django.views.generic import ListView
 from .models import Post
 from django.http import Http404
 from django.core.paginator import PageNotAnInteger, EmptyPage, Paginator
-from .forms import CommentForm, EmailPostForm
+from .forms import CommentForm, EmailPostForm, SearchForm
 from django.core.mail import send_mail
 from django.views.decorators.http import require_POST
+from taggit.models import Tag
+from django.db.models import Count
+from django.contrib.postgres.search import SearchVector, SearchQuery, SearchRank
 
 # Create your views here.
+def post_search(request):
+    form = SearchForm()
+    query = None
+    results = []
+    if 'query' in request.GET:
+        form = SearchForm(request.GET)
+        if form.is_valid():
+            query = form.cleaned_data['query']
+            results = (Post.published.annotate(search=SearchVector('title', 'body'),).filter(search=query))
+    return render(request, 'blog/post/search.html', {'form': form, 'query': query, 'results': results,})
+
 @require_POST
 def post_comment(request, post_id):
     post = get_object_or_404(
@@ -102,6 +116,23 @@ class PostListView(ListView):
     paginate_by = 3
     template_name = 'blog/post/list.html'
 
+    def get_queryset(self):
+        queryset = super().get_queryset()
+        tag_slug = self.kwargs.get('tag_slug')
+
+        self.tag = None
+        if tag_slug:
+            self.tag = get_object_or_404(Tag, slug=tag_slug)
+            queryset = queryset.filter(tags__in=[self.tag])
+
+        return queryset
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        if self.tag:
+            context['tag'] = self.tag
+        return context
+    
 # Renders single post
 def post_detail(request, year, month, day, post):
     try:
@@ -120,9 +151,13 @@ def post_detail(request, year, month, day, post):
 
     comments = post.comments.filter(active=True)
     form = CommentForm()
+
+    post_tags_ids = post.tags.values_list('id', flat=True)
+    similar_posts = Post.published.filter(tags__in=post_tags_ids).exclude(id=post.id)
+    similar_posts = similar_posts.annotate(same_tags=Count('tags')).order_by('-same_tags', '-publish')[:4]
     
     return render(
         request,
         'blog/post/detail.html',
-        {'post': post, 'comments': comments, 'form': form}
+        {'post': post, 'comments': comments, 'form': form, 'similar_posts': similar_posts}
     )
