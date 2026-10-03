@@ -1,0 +1,50 @@
+{% extends 'base.html' %}
+{% load thumbnail %}
+{% load static %}
+
+{% block title %}People{% endblock %}
+
+{% block content %}
+    <h1>People</h1>
+    <div id="people-list">
+        {% for user in users %}
+            <div class="user">
+                <a href="{{ user.get_absolute_url }}">
+                    {% if user.profile.photo %}
+                        <img src="{% thumbnail user.profile.photo 180x180 %}">
+                    {% else %}
+                        <img src="{% static 'default_profile_pic.jpg' %}" width="180" height="180">
+                    {% endif %}
+                </a>
+                <div class="info">
+                    <a href="{{ user.get_absolute_url }}" class="title">{{ user.get_full_name }}</a>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+        {% if users.has_other_pages %}
+        <ul class="pagination">
+
+            {% if users.has_previous %}
+                <li><a href="?page={{ users.previous_page_number }}">&laquo;</a></li>
+            {% else %}
+                <li class="disabled"><span>&laquo;</span></li>
+            {% endif %}
+
+            {% for i in users.paginator.page_range %}
+                {% if users.number == i %}
+                    <li class="active"><span>{{ i }} <span class="sr-only">(current)</span></span></li>
+                {% else %}
+                    <li><a href="?page={{ i }}">{{ i }}</a></li>
+                {% endif %}
+            {% endfor %}
+
+            {% if users.has_next %}                                     {# fixed #}
+                <li><a href="?page={{ users.next_page_number }}">&raquo;</a></li>  {# fixed #}
+            {% else %}
+                <li class="disabled"><span>&raquo;</span></li>
+            {% endif %}
+
+        </ul>
+    {% endif %}
+{% endblock %}
