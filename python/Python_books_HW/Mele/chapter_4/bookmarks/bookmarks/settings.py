@@ -48,12 +48,14 @@ INSTALLED_APPS = [
     "social_django",
     "django_extensions",
     "easy_thumbnails",
+    'debug_toolbar',
     # our apps
     'images.apps.ImagesConfig',
     'actions.apps.ActionsConfig',
 ]
 
 MIDDLEWARE = [
+    "debug_toolbar.middleware.DebugToolbarMiddleware",
     "django.middleware.security.SecurityMiddleware",
     "django.contrib.sessions.middleware.SessionMiddleware",
     "django.middleware.common.CommonMiddleware",
@@ -83,6 +85,12 @@ TEMPLATES = [
 ]
 
 WSGI_APPLICATION = "bookmarks.wsgi.application"
+
+# Redis
+
+REDIS_HOST = 'localhost'
+REDIS_PORT = 6379
+REDIS_DB = 0
 
 # Media
 
@@ -179,4 +187,8 @@ SOCIAL_AUTH_PIPELINE = [
     'social_core.pipeline.social_auth.associate_user',
     'social_core.pipeline.social_auth.load_extra_data',
     'social_core.pipeline.user.user_details',
+]
+
+INTERNAL_IPS = [
+    '127.0.0.1',
 ]
