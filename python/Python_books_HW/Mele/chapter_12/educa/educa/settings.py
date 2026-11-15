@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     "django.contrib.staticfiles",
     'students.apps.StudentsConfig',
     'redisboard',
+    'rest_framework',
 ]
 
 MIDDLEWARE = [
@@ -142,11 +143,16 @@ LOGIN_REDIRECT_URL = reverse_lazy('student_course_list')
 # CACH
 CACHES = {
     'default': {
-        'BACKEND': 'django.core.cache.backends.memcached.PyMemcacheCache',
-        'LOCATION': '127.0.0.1:11211',
+        'BACKEND': 'django.core.cache.backends.redis.RedisCache',
+        'LOCATION': 'redis://127.0.0.1:6379',
     }
 }
 
 CACHE_MIDDLEWARE_ALIAS = 'default'
 CACHE_MIDDLEWARE_SECONDS = 600 * 15
 CACHE_MIDDLEWARE_KEY_PREFIX = 'educa'
+
+# RESTFUL API
+REST_FRAMEWORK = {
+    'DEFAULT_PERMISSION_CLASSES': ['rest_framework.permissions.DjangoModelPermissionsOrAnonReadOnly']
+}
