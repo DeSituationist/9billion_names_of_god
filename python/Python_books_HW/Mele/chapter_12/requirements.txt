@@ -1,0 +1,17 @@
+asgiref
+Django
+Pillow
+sqlparse
+django-braces
+django-embed-video
+pymemcache
+django-debug-toolbar
+redis
+django-redisboard
+djangorestframework
+requests
+channels[daphne]
+channels-redis
+psycopg
+uwsgi
+python-decouple
