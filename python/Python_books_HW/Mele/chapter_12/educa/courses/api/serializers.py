@@ -7,12 +7,12 @@ class SubjectSerializer(serializers.ModelSerializer):
     popular_courses = serializers.SerializerMethodField()
 
     def get_popular_courses(self, obj):
-        courses = obj.courses.annotate(total_students=Count('students')).order_by('total_students')[:3]
+        courses = obj.courses.annotate(total_students=Count('students')).order_by('-total_students')[:3]
         return [f'{c.title} ({c.total_students})' for c in courses]
 
     class Meta:
-            model = Subject
-            fields = ['id', 'title', 'slug', 'total_courses', 'popular_courses']
+        model = Subject
+        fields = ['id', 'title', 'slug', 'total_courses', 'popular_courses']
 
 class ItemRelatedField(serializers.ModelSerializer):
     def to_representation(self, value):
@@ -45,4 +45,5 @@ class ModuleWithContentsSerializer(serializers.ModelSerializer):
 class CourseWithContentsSerializer(serializers.ModelSerializer):
     modules = ModuleWithContentsSerializer(many=True)
     class Meta:
+        model = Course
         fields = ['id', 'subject', 'title', 'slug', 'overview', 'created', 'owner', 'modules']

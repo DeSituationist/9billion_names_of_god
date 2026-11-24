@@ -32,6 +32,7 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
+    'daphne',
     'courses.apps.CoursesConfig',
     "django.contrib.admin",
     "django.contrib.auth",
@@ -42,6 +43,7 @@ INSTALLED_APPS = [
     'students.apps.StudentsConfig',
     'redisboard',
     'rest_framework',
+    'chat.apps.ChatConfig',
 ]
 
 MIDDLEWARE = [
@@ -155,4 +157,22 @@ CACHE_MIDDLEWARE_KEY_PREFIX = 'educa'
 # RESTFUL API
 REST_FRAMEWORK = {
     'DEFAULT_PERMISSION_CLASSES': ['rest_framework.permissions.DjangoModelPermissionsOrAnonReadOnly']
+}
+
+# ASGI
+ASGI_APPLICATION = 'educa.asgi.application'
+
+# Channels
+CHANNEL_LAYERS = {
+    'default': {
+        'BACKEND': 'channels_redis.core.RedisChannelLayer',
+        'CONFIG': {
+            'hosts': [
+                {
+                    'address': 'redis://127.0.0.1:6379/0',
+                    'socket_timeout': None,
+                }
+            ],
+        },
+    },
 }
